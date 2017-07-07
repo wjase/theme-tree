@@ -38,6 +38,7 @@ import java.util.function.Consumer;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.autoconfigure.thymeleaf.ThymeleafAutoConfiguration;
 import org.springframework.boot.autoconfigure.thymeleaf.ThymeleafProperties;
 import org.springframework.context.ApplicationContext;
@@ -78,6 +79,7 @@ public class TemplateResolverAutoConfiguration
 
     @Bean
     @ConditionalOnMissingBean(MutableCandidateThemeSource.class)
+    @ConditionalOnProperty(APP_PROPERTIES_THEME_PREFIX)
     public MutableCandidateThemeSource candidateThemeSource(Environment env, ApplicationContext context)
     {
         final DefaultCandidateThemeSource listCandidateThemeSource = new DefaultCandidateThemeSource();
@@ -96,6 +98,14 @@ public class TemplateResolverAutoConfiguration
             System.out.println(String.format("theme:%s, active expr:%s\n", theme, activeExpr));
         }
 
+        return listCandidateThemeSource;
+    }
+
+    @Bean
+    @ConditionalOnMissingBean(MutableCandidateThemeSource.class)
+    public MutableCandidateThemeSource emptyCandidateThemeSource(Environment env, ApplicationContext context)
+    {
+        final DefaultCandidateThemeSource listCandidateThemeSource = new DefaultCandidateThemeSource();
         return listCandidateThemeSource;
     }
 
