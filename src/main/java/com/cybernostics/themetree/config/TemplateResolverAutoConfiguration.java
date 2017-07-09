@@ -68,7 +68,7 @@ public class TemplateResolverAutoConfiguration
 
     @Bean
     @ConditionalOnMissingBean(name = "addResourceHandlersFunction")
-    Consumer<ResourceHandlerRegistry> addResourceHandlersFunction(StaticResourceRootCollection staticResourcesConfg, ResourceResolver resolver)
+    public Consumer<ResourceHandlerRegistry> addResourceHandlersFunction(StaticResourceRootCollection staticResourcesConfg, ResourceResolver resolver)
     {
         return (registry) ->
         {
