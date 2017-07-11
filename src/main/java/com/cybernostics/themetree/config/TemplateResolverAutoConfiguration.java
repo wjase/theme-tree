@@ -35,6 +35,8 @@ import com.cybernostics.themetree.theme.resolvers.MutableCandidateThemeSource;
 import com.cybernostics.themetree.theme.resolvers.WrappedSpringThemeResolver;
 import static java.util.Arrays.stream;
 import java.util.function.Consumer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -65,6 +67,7 @@ public class TemplateResolverAutoConfiguration
 {
 
     public static final String APP_PROPERTIES_THEME_PREFIX = "themetree.themes";
+    private static final Logger logger = Logger.getLogger(TemplateResolverAutoConfiguration.class.getName());
 
     @Bean
     @ConditionalOnMissingBean(name = "addResourceHandlersFunction")
@@ -95,7 +98,7 @@ public class TemplateResolverAutoConfiguration
             final ConditionalELCandidateTheme conditionalELCandidateTheme = new ConditionalELCandidateTheme(order, theme, activeExpr);
             conditionalELCandidateTheme.setApplicationContext(context);
             listCandidateThemeSource.add(conditionalELCandidateTheme);
-            System.out.println(String.format("theme:%s, active expr:%s\n", theme, activeExpr));
+            Logger.getLogger(TemplateResolverAutoConfiguration.class.getName()).log(Level.FINE, String.format("", theme, activeExpr));
         }
 
         return listCandidateThemeSource;
