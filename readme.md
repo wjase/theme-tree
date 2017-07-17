@@ -1,13 +1,18 @@
 # Spring Theme Tree
 
-## Themeing for Spring - Done properly
-
-## What does 'done properly' mean?
+## Themeing for Spring - Reimagined
 
 This library contains classes and auto configuration which allows you to
-have multiple themes in your web application. It allows you to extend themes
-without having to duplicate all the files, and it allows several themes to coexist
-in a running app and switch between them on the fly.
+
+ * have multiple concurrent themes in your web application. 
+ * extend themes without having to duplicate all the files
+ * switch between them on the fly based on conditions expressed in Spring EL.
+ * when coupled with Thymol and Thymeleaf, you can also have designers create, edit and view layouts without requiring a running application. They just double click.
+ 
+ The classic example is the Christmas theme for a web store which changes a handful
+ of image and header/footer assets during the Christmas period.
+
+## Why re-imagine Spring themes?
 
 Spring already has some support for loading resources based on a theme name, but
 this is fairly basic and awkward, extending the same mechanism used for
@@ -56,11 +61,13 @@ It doesn't work becuase with Spring/MVC the default locations for static
 resources and view templates are not the same.
 
 Resources live in :
+
     src/main/resources/public 
-or 
+    or 
     src/main/resources/static 
 
 Whereas, view locations for Thymeleaf default to 
+
     src/main/resources/templates
 
 In order to fix this, I created some configuration to change this, bringing the 
