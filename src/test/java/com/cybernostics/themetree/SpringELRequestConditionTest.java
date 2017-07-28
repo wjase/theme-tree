@@ -9,9 +9,9 @@ package com.cybernostics.themetree;
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -19,7 +19,7 @@ package com.cybernostics.themetree;
  * limitations under the License.
  * #L%
  */
-import com.cybernostics.themetree.theme.resolvers.SpringELRequestCondition;
+import com.cybernostics.themetree.theme.sources.SpringELRequestCondition;
 import java.text.ParseException;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
@@ -87,7 +87,7 @@ public class SpringELRequestConditionTest
         ZonedDateTime outSideChristmasPeriod = ZonedDateTime.now().withMonth(11);
         ZonedDateTime inSideChristmasPeriod = ZonedDateTime.now().withMonth(12).withDayOfMonth(15);
         when(request.getHeader("Date")).thenReturn(outSideChristmasPeriod.format(DateTimeFormatter.RFC_1123_DATE_TIME));
-        SpringELRequestCondition condition = new SpringELRequestCondition("inChristmasPeriod(#requestDate)");
+        SpringELRequestCondition condition = new SpringELRequestCondition("inChristmasPeriod(#clientDateTime)");
         condition.addMethod("inChristmasPeriod", (args) -> inChristmasPeriod((ZonedDateTime) args[0]));
 
         Assert.assertThat(condition.apply(request), is(false));

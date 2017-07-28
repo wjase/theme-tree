@@ -1,4 +1,4 @@
-package com.cybernostics.themetree.theme.resolvers;
+package com.cybernostics.themetree.theme.sources;
 
 /*
  * #%L
@@ -9,9 +9,9 @@ package com.cybernostics.themetree.theme.resolvers;
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -34,6 +34,15 @@ import org.springframework.expression.spel.standard.SpelExpressionParser;
 import org.springframework.expression.spel.support.StandardEvaluationContext;
 
 /**
+ * SpringELRequestCondition represents an expression which is used to evaluate a
+ * condition. The expression is evaluated in a context which includes some
+ * relevant http request variables:
+ * <pre>
+ *      clientDateTime: a ZonedDateTime representing the time/date of the
+ *                      request in the clients time zone.
+ *      app: The application context
+ *      request: The current HttpServletRequest
+ * </pre>
  *
  * @author jason
  */
@@ -69,7 +78,8 @@ public class SpringELRequestCondition implements Function<HttpServletRequest, Bo
     /**
      * This lambda provides a hook just before the expression is evaluated, to
      * provide the chance to set any variables in the expression context. That
-     * could involve some date processing for example to create a 'requestDate'
+     * could involve some date processing for example to create a
+     * 'clientDateTime'
      *
      * @param requestSimpleVaribaleExtractor
      */
@@ -88,7 +98,7 @@ public class SpringELRequestCondition implements Function<HttpServletRequest, Bo
             try
             {
                 ZonedDateTime requestDate = ZonedDateTime.parse(requestDateString, DateTimeFormatter.RFC_1123_DATE_TIME);
-                evalContext.setVariable("requestDate", requestDate);
+                evalContext.setVariable("clientDateTime", requestDate);
             } catch (Throwable th)
             {
                 log.log(Level.SEVERE, "Bad request date from http request header", th);

@@ -28,14 +28,13 @@ import com.cybernostics.themetree.theme.persistence.NoThemePersistence;
 import com.cybernostics.themetree.theme.persistence.ThemePersistence;
 import com.cybernostics.themetree.theme.persistence.ThemePersistenceInterceptor;
 import com.cybernostics.themetree.theme.resolvers.CascadedThemeResolver;
-import com.cybernostics.themetree.theme.resolvers.ConditionalELCandidateTheme;
-import com.cybernostics.themetree.theme.resolvers.DefaultCandidateThemeSource;
 import com.cybernostics.themetree.theme.resolvers.MultiCandidateThemeResolver;
-import com.cybernostics.themetree.theme.resolvers.MutableCandidateThemeSource;
 import com.cybernostics.themetree.theme.resolvers.WrappedSpringThemeResolver;
+import com.cybernostics.themetree.theme.sources.DefaultCandidateThemeSource;
+import static com.cybernostics.themetree.theme.sources.DefaultCandidateThemeSource.fromProperties;
+import com.cybernostics.themetree.theme.sources.MutableCandidateThemeSource;
 import static java.util.Arrays.stream;
 import java.util.function.Consumer;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
@@ -85,23 +84,7 @@ public class TemplateResolverAutoConfiguration
     @ConditionalOnProperty(APP_PROPERTIES_THEME_PREFIX)
     public MutableCandidateThemeSource candidateThemeSource(Environment env, ApplicationContext context)
     {
-        final DefaultCandidateThemeSource listCandidateThemeSource = new DefaultCandidateThemeSource();
-        String[] themes = env.getProperty(APP_PROPERTIES_THEME_PREFIX)
-                .trim()
-                .replaceAll(" ", "")
-                .split(",");
-        for (String theme : themes)
-        {
-            String prefix = String.format("%s.%s.", APP_PROPERTIES_THEME_PREFIX, theme);
-            Integer order = Integer.valueOf(env.getProperty(prefix + "order", "0"));
-            String activeExpr = env.getProperty(prefix + "active", "true");
-            final ConditionalELCandidateTheme conditionalELCandidateTheme = new ConditionalELCandidateTheme(order, theme, activeExpr);
-            conditionalELCandidateTheme.setApplicationContext(context);
-            listCandidateThemeSource.add(conditionalELCandidateTheme);
-            Logger.getLogger(TemplateResolverAutoConfiguration.class.getName()).log(Level.FINE, String.format("", theme, activeExpr));
-        }
-
-        return listCandidateThemeSource;
+        return fromProperties(env, context);
     }
 
     @Bean

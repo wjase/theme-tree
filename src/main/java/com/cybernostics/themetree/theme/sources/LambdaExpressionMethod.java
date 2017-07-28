@@ -1,4 +1,4 @@
-package com.cybernostics.themetree.theme.resolvers;
+package com.cybernostics.themetree.theme.sources;
 
 /*
  * #%L

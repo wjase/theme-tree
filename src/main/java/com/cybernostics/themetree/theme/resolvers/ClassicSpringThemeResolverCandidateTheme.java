@@ -1,8 +1,8 @@
 package com.cybernostics.themetree.theme.resolvers;
 
-/*
+/*-
  * #%L
- * spring-thymeleaf-themetree
+ * themetree
  * %%
  * Copyright (C) 1992 - 2017 Cybernostics Pty Ltd
  * %%
@@ -19,18 +19,44 @@ package com.cybernostics.themetree.theme.resolvers;
  * limitations under the License.
  * #L%
  */
-import org.springframework.context.ApplicationEvent;
+
+import javax.servlet.http.HttpServletRequest;
+import org.springframework.web.servlet.ThemeResolver;
 
 /**
  *
  * @author jason
  */
-class ThemesUpdatedEvent extends ApplicationEvent
+public class ClassicSpringThemeResolverCandidateTheme implements CandidateTheme
 {
 
-    public ThemesUpdatedEvent(Object source)
+    /**
+     * The classic theme resolver
+     */
+    private ThemeResolver resolver;
+    private int order;
+
+    public ClassicSpringThemeResolverCandidateTheme(ThemeResolver resolver)
     {
-        super(source);
+        this.resolver = resolver;
+    }
+
+    @Override
+    public String getName(HttpServletRequest request)
+    {
+        return resolver.resolveThemeName(request);
+    }
+
+    @Override
+    public int getOrder()
+    {
+        return order;
+    }
+
+    @Override
+    public boolean isActive(HttpServletRequest request)
+    {
+        return true;
     }
 
 }

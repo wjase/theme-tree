@@ -1,4 +1,4 @@
-package com.cybernostics.themetree.theme.resolvers;
+package com.cybernostics.themetree.theme.sources;
 
 /*
  * #%L
@@ -20,6 +20,7 @@ package com.cybernostics.themetree.theme.resolvers;
  * #L%
  */
 
+import com.cybernostics.themetree.theme.resolvers.CandidateTheme;
 import java.util.Collection;
 import org.springframework.context.ApplicationEventPublisher;
 

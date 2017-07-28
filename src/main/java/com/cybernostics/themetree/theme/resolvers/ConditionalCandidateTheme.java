@@ -9,9 +9,9 @@ package com.cybernostics.themetree.theme.resolvers;
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -42,12 +42,6 @@ public class ConditionalCandidateTheme implements CandidateTheme
     }
 
     @Override
-    public String getName()
-    {
-        return name;
-    }
-
-    @Override
     public int getOrder()
     {
         return order;
@@ -57,6 +51,12 @@ public class ConditionalCandidateTheme implements CandidateTheme
     public boolean isActive(HttpServletRequest request)
     {
         return isActiveCondition.apply(request);
+    }
+
+    @Override
+    public String getName(HttpServletRequest request)
+    {
+        return name;
     }
 
 }
