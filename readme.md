@@ -89,7 +89,7 @@ I've actually gone with a theme layout that looks like
 
     /src/main/resources/templates/theme/[themename]
 
-this allows me to still have 'default' resources under the templates folder
+This allows me to still have 'default' resources under the templates folder
 because the theme subfolder gets all the files for named themes out of the way.
 
 Having got a set a named themes in subdirectories, the next question was how
