@@ -2,7 +2,7 @@ package com.cybernostics.themetree.theme.persistence;
 
 /*
  * #%L
- * spring-thymeleaf-themetree
+ * theme-tree
  * %%
  * Copyright (C) 1992 - 2017 Cybernostics Pty Ltd
  * %%

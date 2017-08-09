@@ -6,7 +6,7 @@ package com.cybernostics.themetree.defaults;
 
 /*
  * #%L
- * spring-thymeleaf-themetree
+ * theme-tree
  * %%
  * Copyright (C) 1992 - 2017 Cybernostics Pty Ltd
  * %%
