@@ -101,10 +101,10 @@ theme 2 to User Y? Yes. Yes you can.
 ### Prepare your templates and assets for themetree:
  1. Include this library as a dependancy in your spring boot thymeleaf app.
  2. Move your css,js etc asset folders from src/main/resources/public to under 
-the src/main/templates folder.
+the src/main/templates/theme folder.
  3. Test that it still works.
- 4. Add thymol and configure so you can now double-click to view. (See the example 
-   project (TBD Link here))
+ 4. Add thymol and configure so you can now double-click to view. (See the  
+ [example project](https://github.com/wjase/theme-tree-tutorial)
   
 ### choose a theme name
 
@@ -113,7 +113,7 @@ the src/main/templates folder.
     /src/main/resources/templates/theme/barry/
  3. If you run your app you'll get a 404 error, because Spring needs to be
     given a little help in finding your views, fragments and assets.
- 4. Add the spring-thymeleaf-themetree to your classpath using maven or gradle.
+ 4. Add the theme-tree to your classpath using maven or gradle.
  5. The themetree classes should autoconfigure themselves into life and provide
     the necessary mapping.
  6. The only bit of config you need to add is a CascadedThemeResolver bean. (If
@@ -130,3 +130,7 @@ the src/main/templates folder.
     In this case if there is a header under the christmas folder tree, that will
     override the header in the default location. Same goes for images, css, js 
     etc. 
+
+## Is there a tutorial?
+
+Yes. https://github.com/wjase/theme-tree-tutorial/wiki
