@@ -2,14 +2,41 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.cybernostics</groupId>
+
+    <name>ThemeTree</name>
+    <description>Provides support for multiple concurrent themes in a Spring Boot thymeleag application</description>
+
     <artifactId>theme-tree</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
+
+    <scm>
+        <url>https://github.com/wjase/theme-tree.git</url>
+    </scm>
+
+    <url>https://github.com/wjase/theme-tree.git</url>
+    <developers>
+        <developer>
+            <organization>Cybernostics Pty Ltd</organization>
+            <organizationUrl>https://cybernostics.com.au</organizationUrl>
+            <email>info@cybernostics.com.au</email>
+            <name>Jason Wraxall</name>
+        </developer>
+    </developers>
+
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
     
     <build>
         <plugins>
