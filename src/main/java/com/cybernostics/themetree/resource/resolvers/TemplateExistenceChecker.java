@@ -21,7 +21,7 @@ package com.cybernostics.themetree.resource.resolvers;
  */
 /**
  *
- * @author jason
+ * @author jason wraxall
  */
 public interface TemplateExistenceChecker
 {

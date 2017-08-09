@@ -23,7 +23,7 @@ import org.thymeleaf.spring4.SpringTemplateEngine;
 
 /**
  *
- * @author jason
+ * @author jason wraxall
  */
 public interface SpringTemplateEngineConfigurer
 {

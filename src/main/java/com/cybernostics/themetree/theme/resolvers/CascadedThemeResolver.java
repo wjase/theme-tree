@@ -26,7 +26,7 @@ import javax.servlet.http.HttpServletRequest;
  * This provides the active list of themes to use for locating templates and
  * assets.
  *
- * @author jason
+ * @author jason wraxall
  */
 public interface CascadedThemeResolver
 {

@@ -25,7 +25,7 @@ import org.springframework.web.servlet.ThemeResolver;
 
 /**
  *
- * @author jason
+ * @author jason wraxall
  */
 public class ClassicSpringThemeResolverCandidateTheme implements CandidateTheme
 {

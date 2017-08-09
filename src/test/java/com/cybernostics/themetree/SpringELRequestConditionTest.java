@@ -36,7 +36,7 @@ import org.springframework.context.ApplicationContext;
 
 /**
  *
- * @author jason
+ * @author jason wraxall
  */
 @RunWith(MockitoJUnit44Runner.class)
 public class SpringELRequestConditionTest

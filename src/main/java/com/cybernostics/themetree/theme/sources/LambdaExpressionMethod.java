@@ -31,7 +31,7 @@ import org.springframework.expression.spel.support.StandardEvaluationContext;
 
 /**
  *
- * @author jason
+ * @author jason wraxall
  */
 public class LambdaExpressionMethod
 {

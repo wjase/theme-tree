@@ -29,7 +29,7 @@ import org.springframework.web.servlet.resource.ResourceResolverChain;
 
 /**
  *
- * @author jason
+ * @author jason wraxall
  */
 public class ThemeResourceResolver extends PathResourceResolver
 {

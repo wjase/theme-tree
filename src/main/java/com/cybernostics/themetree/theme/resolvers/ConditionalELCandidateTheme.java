@@ -37,7 +37,7 @@ import org.springframework.context.ApplicationContext;
  * #requestDate a ZonedDateTime for the current request #app the application
  * context
  *
- * @author jason
+ * @author jason wraxall
  */
 public class ConditionalELCandidateTheme implements CandidateTheme
 {

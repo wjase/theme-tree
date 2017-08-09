@@ -25,7 +25,7 @@ import javax.servlet.http.HttpServletRequest;
 
 /**
  *
- * @author jason
+ * @author jason wraxall
  */
 public class FixedThemeResolver implements CascadedThemeResolver
 {

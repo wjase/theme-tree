@@ -31,7 +31,7 @@ import javax.servlet.http.HttpServletResponse;
  * Subclasses of this can use cookies, session, request attributes etc to store
  * the calculated list of themes.
  *
- * @author jason
+ * @author jason wraxall
  */
 public interface ThemePersistence
 {

@@ -26,7 +26,7 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  *
- * @author jason
+ * @author jason wraxall
  */
 @Configuration
 public class StaticResourcesConfiguration

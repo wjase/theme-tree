@@ -31,7 +31,7 @@ import org.thymeleaf.templateresolver.TemplateResolution;
 
 /**
  *
- * @author jason
+ * @author jason wraxall
  */
 public class ThemeTemplateResolver implements ITemplateResolver
 {

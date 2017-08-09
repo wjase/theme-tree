@@ -26,7 +26,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author jason
+ * @author jason wraxall
  */
 public class NoThemePersistence implements ThemePersistence
 {

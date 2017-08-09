@@ -28,7 +28,7 @@ import org.springframework.web.servlet.resource.ResourceResolver;
  * Encapsulates a root path to a static resource type. eg. css, js, img, font
  * etc
  *
- * @author jason
+ * @author jason wraxall
  */
 public class StaticResourceRootCollection extends TreeSet<String>
 {

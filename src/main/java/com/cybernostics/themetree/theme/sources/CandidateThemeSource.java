@@ -26,7 +26,7 @@ import java.util.stream.Stream;
  *
  * Provides themes to a CascadedThemeResolver
  *
- * @author jason
+ * @author jason wraxall
  */
 public interface CandidateThemeSource
 {

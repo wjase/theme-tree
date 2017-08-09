@@ -42,7 +42,7 @@ import org.springframework.core.env.Environment;
  * It is also an application event publisher which will notify subscribers when
  * the list has been updated.
  *
- * @author jason
+ * @author jason wraxall
  */
 public class DefaultCandidateThemeSource implements MutableCandidateThemeSource
 {

@@ -27,7 +27,7 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 /**
  *
- * @author jason
+ * @author jason wraxall
  */
 public class ThemePersistenceInterceptor extends HandlerInterceptorAdapter
 {

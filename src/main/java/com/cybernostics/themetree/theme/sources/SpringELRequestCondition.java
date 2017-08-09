@@ -48,7 +48,7 @@ import org.springframework.expression.spel.support.StandardEvaluationContext;
  *      request: The current HttpServletRequest
  * </pre>
  *
- * @author jason
+ * @author jason wraxall
  */
 public class SpringELRequestCondition implements Function<HttpServletRequest, Boolean> {
 

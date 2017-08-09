@@ -37,7 +37,7 @@ import org.springframework.web.util.WebUtils;
  * match.
  *
  *
- * @author jason
+ * @author jason wraxall
  */
 public class CookieThemePersistence implements ThemePersistence
 {

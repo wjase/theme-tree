@@ -29,7 +29,7 @@ import org.springframework.web.servlet.ThemeResolver;
  * Adapter for apps using 'classic' Spring theme resolvers which only know about
  * a single active theme as opposed to a cascaded set.
  *
- * @author jason
+ * @author jason wraxall
  */
 public class WrappedSpringThemeResolver implements CascadedThemeResolver
 {

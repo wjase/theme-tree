@@ -28,7 +28,7 @@ import org.springframework.core.annotation.Order;
 
 /**
  *
- * @author jason
+ * @author jason wraxall
  */
 @Configuration
 public class ResolverConfiguration

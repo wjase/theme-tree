@@ -36,7 +36,7 @@ import org.springframework.context.ApplicationListener;
  * The Multi-candidate theme resolver figures our which themes are active for
  * the current user.
  *
- * @author jason
+ * @author jason wraxall
  */
 public class MultiCandidateThemeResolver implements CascadedThemeResolver, ApplicationListener<ThemesUpdatedEvent>
 {

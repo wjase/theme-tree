@@ -57,7 +57,7 @@ import org.thymeleaf.templateresolver.ITemplateResolver;
 
 /**
  *
- * @author jason
+ * @author jason wraxall
  */
 @Configuration
 @AutoConfigureBefore(ThymeleafAutoConfiguration.class)

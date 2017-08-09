@@ -23,7 +23,7 @@ import org.springframework.context.ApplicationEvent;
 
 /**
  *
- * @author jason
+ * @author jason wraxall
  */
 public class ThemesUpdatedEvent extends ApplicationEvent
 {

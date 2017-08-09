@@ -24,7 +24,7 @@ package com.cybernostics.themetree.asset;
  * Encapsulates a root path to a static resource type. eg. css, js, img, font
  * etc
  *
- * @author jason
+ * @author jason wraxall
  */
 public class StaticResourceRoot
 {

@@ -25,7 +25,7 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * A Theme which has a custom supplied function to determine if it is active.
  *
- * @author jason
+ * @author jason wraxall
  */
 public class ConditionalCandidateTheme implements CandidateTheme
 {

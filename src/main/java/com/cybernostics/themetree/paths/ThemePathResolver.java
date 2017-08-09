@@ -29,7 +29,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 /**
  *
- * @author jason
+ * @author jason wraxall
  */
 public class ThemePathResolver
 {

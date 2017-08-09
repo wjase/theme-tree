@@ -31,7 +31,7 @@ import org.mockito.runners.MockitoJUnit44Runner;
 
 /**
  *
- * @author jason
+ * @author jason wraxall
  */
 @RunWith(MockitoJUnit44Runner.class)
 public class MultiCandidateThemeResolverTest

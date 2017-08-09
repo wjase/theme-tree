@@ -33,7 +33,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * For that, try CookieThemePersistence or SessionThemePersistence
  *
- * @author jason
+ * @author jason wraxall
  */
 public class ApplicationThemePersistence implements ThemePersistence
 {

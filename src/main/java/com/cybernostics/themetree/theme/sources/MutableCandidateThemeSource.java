@@ -26,7 +26,7 @@ import org.springframework.context.ApplicationEventPublisher;
 
 /**
  *
- * @author jason
+ * @author jason wraxall
  */
 public interface MutableCandidateThemeSource extends CandidateThemeSource
 {
