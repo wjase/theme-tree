@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.cybernostics</groupId>
+    <groupId>au.com.cybernostics</groupId>
 
     <name>ThemeTree</name>
     <description>Provides support for multiple concurrent themes in a Spring Boot thymeleag application</description>
@@ -23,7 +23,8 @@
     <url>https://github.com/wjase/theme-tree.git</url>
     <developers>
         <developer>
-            <organization>Cybernostics Pty Ltd</organization>
+            <organization>Cybernostics Pty Ltd Australia</organization>
+            <timezone>+10</timezone>
             <organizationUrl>https://cybernostics.com.au</organizationUrl>
             <email>info@cybernostics.com.au</email>
             <name>Jason Wraxall</name>
