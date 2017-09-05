@@ -34,18 +34,21 @@ import javax.servlet.http.HttpServletResponse;
  * For that, try CookieThemePersistence or SessionThemePersistence
  *
  * @author jason wraxall
+ * @version $Id: $Id
  */
 public class ApplicationThemePersistence implements ThemePersistence
 {
 
     Optional<List<String>> themes = Optional.empty();
 
+    /** {@inheritDoc} */
     @Override
     public Optional<Stream<String>> get(HttpServletRequest request)
     {
         return themes.map(l -> l.stream());
     }
 
+    /** {@inheritDoc} */
     @Override
     public void put(String themes,
             HttpServletRequest request,
@@ -54,12 +57,14 @@ public class ApplicationThemePersistence implements ThemePersistence
         this.themes = Optional.of(asList(themes.split(",")));
     }
 
+    /** {@inheritDoc} */
     @Override
     public void clear(HttpServletRequest request, HttpServletResponse response)
     {
         themes = Optional.empty();
     }
 
+    /** {@inheritDoc} */
     @Override
     public void clearAll()
     {

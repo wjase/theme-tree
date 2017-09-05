@@ -26,6 +26,7 @@ import javax.servlet.http.HttpServletRequest;
  * A Theme which has a custom supplied function to determine if it is active.
  *
  * @author jason wraxall
+ * @version $Id: $Id
  */
 public class ConditionalCandidateTheme implements CandidateTheme
 {
@@ -34,6 +35,13 @@ public class ConditionalCandidateTheme implements CandidateTheme
     private String name;
     private Function<HttpServletRequest, Boolean> isActiveCondition;
 
+    /**
+     * <p>Constructor for ConditionalCandidateTheme.</p>
+     *
+     * @param order a int.
+     * @param name a {@link java.lang.String} object.
+     * @param isActiveCondition a {@link java.util.function.Function} object.
+     */
     public ConditionalCandidateTheme(int order, String name, Function<HttpServletRequest, Boolean> isActiveCondition)
     {
         this.order = order;
@@ -41,18 +49,21 @@ public class ConditionalCandidateTheme implements CandidateTheme
         this.isActiveCondition = isActiveCondition;
     }
 
+    /** {@inheritDoc} */
     @Override
     public int getOrder()
     {
         return order;
     }
 
+    /** {@inheritDoc} */
     @Override
     public boolean isActive(HttpServletRequest request)
     {
         return isActiveCondition.apply(request);
     }
 
+    /** {@inheritDoc} */
     @Override
     public String getName(HttpServletRequest request)
     {

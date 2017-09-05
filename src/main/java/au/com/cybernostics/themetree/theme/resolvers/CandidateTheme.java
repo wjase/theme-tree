@@ -23,8 +23,10 @@ import java.util.Comparator;
 import javax.servlet.http.HttpServletRequest;
 
 /**
+ * <p>CandidateTheme interface.</p>
  *
  * @author jason wraxall
+ * @version $Id: $Id
  */
 public interface CandidateTheme
 {
@@ -33,6 +35,7 @@ public interface CandidateTheme
      * This is the actual text name used to locate the theme. It refers to
      * assets which live under: /src/main/resources/templates/themes/[this name]
      *
+     * @param request - request containing variables on which to decide theme(s)
      * @return the name of the theme
      */
     String getName(HttpServletRequest request);
@@ -40,7 +43,7 @@ public interface CandidateTheme
     /**
      * This allows multiple themes to be sorted so they correctly cascade
      *
-     * @return
+     * @return a int.
      */
     int getOrder();
 
@@ -48,20 +51,13 @@ public interface CandidateTheme
      * This allows a theme to be active based on specific request criteria, like
      * username or role
      *
-     * @param request
-     * @return
+     * @param request a {@link javax.servlet.http.HttpServletRequest} object.
+     * @return a boolean.
      */
     boolean isActive(HttpServletRequest request);
 
     /**
      * This is the comparator used to sort themes by their order.
      */
-    public static Comparator<CandidateTheme> sortedTheme = new Comparator<CandidateTheme>()
-    {
-        @Override
-        public int compare(CandidateTheme o1, CandidateTheme o2)
-        {
-            return Integer.reverse(Integer.compare(o1.getOrder(), o2.getOrder()));
-        }
-    };
+    public static Comparator<CandidateTheme> sortedTheme = (CandidateTheme o1, CandidateTheme o2) -> Integer.reverse(Integer.compare(o1.getOrder(), o2.getOrder()));
 }

@@ -25,17 +25,28 @@ package au.com.cybernostics.themetree.asset;
  * etc
  *
  * @author jason wraxall
+ * @version $Id: $Id
  */
 public class StaticResourceRoot
 {
 
     private String rootPath;
 
+    /**
+     * <p>Constructor for StaticResourceRoot.</p>
+     *
+     * @param rootPath a {@link java.lang.String} object.
+     */
     public StaticResourceRoot(String rootPath)
     {
         this.rootPath = rootPath;
     }
 
+    /**
+     * <p>Getter for the field <code>rootPath</code>.</p>
+     *
+     * @return a {@link java.lang.String} object.
+     */
     public String getRootPath()
     {
         return rootPath;

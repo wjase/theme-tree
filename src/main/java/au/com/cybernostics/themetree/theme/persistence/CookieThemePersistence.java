@@ -36,8 +36,8 @@ import org.springframework.web.util.WebUtils;
  * identifier, which allows all theme cookies to be invalidated if they don't
  * match.
  *
- *
  * @author jason wraxall
+ * @version $Id: $Id
  */
 public class CookieThemePersistence implements ThemePersistence
 {
@@ -51,6 +51,7 @@ public class CookieThemePersistence implements ThemePersistence
         cookieGenerator.setCookieName(THEME_PERSISTENCE_KEY);
     }
 
+    /** {@inheritDoc} */
     @Override
     public Optional<Stream<String>> get(HttpServletRequest request)
     {
@@ -97,18 +98,21 @@ public class CookieThemePersistence implements ThemePersistence
         return asList(themeNames.split(",")).stream();
     }
 
+    /** {@inheritDoc} */
     @Override
     public void put(String themes, HttpServletRequest request, HttpServletResponse response)
     {
         cookieGenerator.addCookie(response, cookieGenerationId + "," + themes);
     }
 
+    /** {@inheritDoc} */
     @Override
     public void clear(HttpServletRequest request, HttpServletResponse response)
     {
         cookieGenerator.removeCookie(response);
     }
 
+    /** {@inheritDoc} */
     @Override
     public void clearAll()
     {

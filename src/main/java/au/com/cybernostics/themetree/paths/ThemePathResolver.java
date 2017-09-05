@@ -29,21 +29,35 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 /**
+ * <p>ThemePathResolver class.</p>
  *
  * @author jason wraxall
+ * @version $Id: $Id
  */
 public class ThemePathResolver
 {
 
     private CascadedThemeResolver resolver;
 
+    /**
+     * <p>Setter for the field <code>resolver</code>.</p>
+     *
+     * @param resolver a {@link au.com.cybernostics.themetree.theme.resolvers.CascadedThemeResolver} object.
+     */
     @Autowired
     public void setResolver(CascadedThemeResolver resolver)
     {
         this.resolver = resolver;
     }
 
-    public Stream<String> themedPathFor(String request, HttpServletRequest httprequest)
+    /**
+     * <p>themedPathFor.</p>
+     *
+     * @param request a {@link java.lang.String} object.
+     * @param httprequest a {@link javax.servlet.http.HttpServletRequest} object.
+     * @return a {@link java.util.stream.Stream} object.
+     */
+    public Stream<String> themedPathsFor(String request, HttpServletRequest httprequest)
     {
         if (request.startsWith("theme"))
         {
@@ -65,7 +79,7 @@ public class ThemePathResolver
     public Stream<String> themedPathFor(String request)
     {
         HttpServletRequest httprequest = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
-        return themedPathFor(request, httprequest);
+        return themedPathsFor(request, httprequest);
 
     }
 

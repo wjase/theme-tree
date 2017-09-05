@@ -38,6 +38,7 @@ import org.springframework.context.ApplicationContext;
  * context
  *
  * @author jason wraxall
+ * @version $Id: $Id
  */
 public class ConditionalELCandidateTheme implements CandidateTheme
 {
@@ -46,6 +47,13 @@ public class ConditionalELCandidateTheme implements CandidateTheme
     private final int order;
     private final String name;
 
+    /**
+     * <p>Constructor for ConditionalELCandidateTheme.</p>
+     *
+     * @param order a int.
+     * @param name a {@link java.lang.String} object.
+     * @param expression a {@link java.lang.String} object.
+     */
     public ConditionalELCandidateTheme(int order, String name, String expression)
     {
         this.order = order;
@@ -55,24 +63,32 @@ public class ConditionalELCandidateTheme implements CandidateTheme
 
     }
 
+    /** {@inheritDoc} */
     @Override
     public String getName(HttpServletRequest request)
     {
         return name;
     }
 
+    /** {@inheritDoc} */
     @Override
     public int getOrder()
     {
         return order;
     }
 
+    /** {@inheritDoc} */
     @Override
     public boolean isActive(HttpServletRequest request)
     {
         return springELRequestCondition.apply(request);
     }
 
+    /**
+     * <p>setApplicationContext.</p>
+     *
+     * @param context a {@link org.springframework.context.ApplicationContext} object.
+     */
     public void setApplicationContext(ApplicationContext context)
     {
         springELRequestCondition.setApplicationContext(context);

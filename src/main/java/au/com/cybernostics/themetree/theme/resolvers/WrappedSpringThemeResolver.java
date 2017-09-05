@@ -30,6 +30,7 @@ import org.springframework.web.servlet.ThemeResolver;
  * a single active theme as opposed to a cascaded set.
  *
  * @author jason wraxall
+ * @version $Id: $Id
  */
 public class WrappedSpringThemeResolver implements CascadedThemeResolver
 {
@@ -39,22 +40,34 @@ public class WrappedSpringThemeResolver implements CascadedThemeResolver
      */
     private ThemeResolver resolver;
 
+    /**
+     * <p>Constructor for WrappedSpringThemeResolver.</p>
+     *
+     * @param resolver a {@link org.springframework.web.servlet.ThemeResolver} object.
+     */
     public WrappedSpringThemeResolver(ThemeResolver resolver)
     {
         this.resolver = resolver;
     }
 
+    /**
+     * <p>setDelegate.</p>
+     *
+     * @param delegate a {@link org.springframework.web.servlet.ThemeResolver} object.
+     */
     public void setDelegate(ThemeResolver delegate)
     {
         this.resolver = delegate;
     }
 
+    /** {@inheritDoc} */
     @Override
     public Stream<String> getCurrentThemes(HttpServletRequest request)
     {
         return Arrays.asList(resolver.resolveThemeName(request)).stream();
     }
 
+    /** {@inheritDoc} */
     @Override
     public void setDefault(String name)
     {

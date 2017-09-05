@@ -27,6 +27,7 @@ import javax.servlet.http.HttpServletRequest;
  * assets.
  *
  * @author jason wraxall
+ * @version $Id: $Id
  */
 public interface CascadedThemeResolver
 {
@@ -46,7 +47,7 @@ public interface CascadedThemeResolver
      * This theme name will always be appended to the others in case everything
      * else fails.
      *
-     * @param name
+     * @param name a {@link java.lang.String} object.
      */
     void setDefault(String name);
 

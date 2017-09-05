@@ -50,14 +50,18 @@ import org.springframework.core.env.Environment;
 import org.springframework.web.servlet.ThemeResolver;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.resource.ResourceResolver;
+import org.springframework.web.servlet.resource.ResourceUrlEncodingFilter;
 import org.thymeleaf.dialect.IDialect;
 import org.thymeleaf.spring4.SpringTemplateEngine;
 import org.thymeleaf.spring4.dialect.SpringStandardDialect;
 import org.thymeleaf.templateresolver.ITemplateResolver;
 
 /**
+ * <p>TemplateResolverAutoConfiguration - Don't invoke directly.</p>
+ * Invoked from the META-INF/spring.factories config file 
  *
  * @author jason wraxall
+ * @version $Id: $Id
  */
 @Configuration
 @AutoConfigureBefore(ThymeleafAutoConfiguration.class)
@@ -65,9 +69,17 @@ import org.thymeleaf.templateresolver.ITemplateResolver;
 public class TemplateResolverAutoConfiguration
 {
 
+    /** Constant <code>APP_PROPERTIES_THEME_PREFIX="themetree.themes"</code> */
     public static final String APP_PROPERTIES_THEME_PREFIX = "themetree.themes";
     private static final Logger logger = Logger.getLogger(TemplateResolverAutoConfiguration.class.getName());
 
+    /**
+     * <p>addResourceHandlersFunction.</p>
+     *
+     * @param staticResourcesConfg a {@link au.com.cybernostics.themetree.asset.StaticResourceRootCollection} object.
+     * @param resolver a {@link org.springframework.web.servlet.resource.ResourceResolver} object.
+     * @return a {@link java.util.function.Consumer} object.
+     */
     @Bean
     @ConditionalOnMissingBean(name = "addResourceHandlersFunction")
     public Consumer<ResourceHandlerRegistry> addResourceHandlersFunction(StaticResourceRootCollection staticResourcesConfg, ResourceResolver resolver)
@@ -79,6 +91,13 @@ public class TemplateResolverAutoConfiguration
 
     }
 
+    /**
+     * <p>candidateThemeSource.</p>
+     *
+     * @param env a {@link org.springframework.core.env.Environment} object.
+     * @param context a {@link org.springframework.context.ApplicationContext} object.
+     * @return a {@link au.com.cybernostics.themetree.theme.sources.MutableCandidateThemeSource} object.
+     */
     @Bean
     @ConditionalOnMissingBean(MutableCandidateThemeSource.class)
     @ConditionalOnProperty(APP_PROPERTIES_THEME_PREFIX)
@@ -87,6 +106,13 @@ public class TemplateResolverAutoConfiguration
         return DefaultCandidateThemeSource.fromProperties(env, context);
     }
 
+    /**
+     * <p>emptyCandidateThemeSource.</p>
+     *
+     * @param env a {@link org.springframework.core.env.Environment} object.
+     * @param context a {@link org.springframework.context.ApplicationContext} object.
+     * @return a {@link au.com.cybernostics.themetree.theme.sources.MutableCandidateThemeSource} object.
+     */
     @Bean
     @ConditionalOnMissingBean(MutableCandidateThemeSource.class)
     public MutableCandidateThemeSource emptyCandidateThemeSource(Environment env, ApplicationContext context)
@@ -95,6 +121,11 @@ public class TemplateResolverAutoConfiguration
         return listCandidateThemeSource;
     }
 
+    /**
+     * <p>themePersistence.</p>
+     *
+     * @return a {@link au.com.cybernostics.themetree.theme.persistence.ThemePersistence} object.
+     */
     @Bean
     @ConditionalOnMissingBean(ThemePersistence.class)
     public ThemePersistence themePersistence()
@@ -102,6 +133,12 @@ public class TemplateResolverAutoConfiguration
         return new NoThemePersistence();
     }
 
+    /**
+     * <p>interceptor.</p>
+     *
+     * @param persistence a {@link au.com.cybernostics.themetree.theme.persistence.ThemePersistence} object.
+     * @return a {@link au.com.cybernostics.themetree.theme.persistence.ThemePersistenceInterceptor} object.
+     */
     @Bean
     @ConditionalOnMissingBean(ThemePersistenceInterceptor.class)
     public ThemePersistenceInterceptor interceptor(ThemePersistence persistence)
@@ -109,6 +146,12 @@ public class TemplateResolverAutoConfiguration
         return new ThemePersistenceInterceptor(persistence);
     }
 
+    /**
+     * <p>cascadedThemeResolver.</p>
+     *
+     * @param resolver a {@link org.springframework.web.servlet.ThemeResolver} object.
+     * @return a {@link au.com.cybernostics.themetree.theme.resolvers.CascadedThemeResolver} object.
+     */
     @Bean
     @ConditionalOnBean(ThemeResolver.class)
     public CascadedThemeResolver cascadedThemeResolver(ThemeResolver resolver)
@@ -116,6 +159,13 @@ public class TemplateResolverAutoConfiguration
         return new WrappedSpringThemeResolver(resolver);
     }
 
+    /**
+     * <p>cascadedMultiThemeResolver.</p>
+     *
+     * @param persistence a {@link au.com.cybernostics.themetree.theme.persistence.ThemePersistence} object.
+     * @param candidateThemes a {@link au.com.cybernostics.themetree.theme.sources.MutableCandidateThemeSource} object.
+     * @return a {@link au.com.cybernostics.themetree.theme.resolvers.CascadedThemeResolver} object.
+     */
     @Bean
     @ConditionalOnMissingBean(CascadedThemeResolver.class)
     public CascadedThemeResolver cascadedMultiThemeResolver(ThemePersistence persistence, MutableCandidateThemeSource candidateThemes)
@@ -133,6 +183,13 @@ public class TemplateResolverAutoConfiguration
         return new SpringStandardDialect();
     }
 
+    /**
+     * <p>existenceChecker.</p>
+     *
+     * @param thymeleafProperties a {@link org.springframework.boot.autoconfigure.thymeleaf.ThymeleafProperties} object.
+     * @param applicationContext a {@link org.springframework.context.ApplicationContext} object.
+     * @return a {@link au.com.cybernostics.themetree.resource.resolvers.TemplateExistenceChecker} object.
+     */
     @Bean
     @ConditionalOnMissingBean(TemplateExistenceChecker.class)
     public TemplateExistenceChecker existenceChecker(ThymeleafProperties thymeleafProperties, ApplicationContext applicationContext)
@@ -156,5 +213,11 @@ public class TemplateResolverAutoConfiguration
     ThemePathResolver pathResolver()
     {
         return new ThemePathResolver();
+    }
+    
+    @Bean
+    @ConditionalOnMissingBean(ResourceUrlEncodingFilter.class)
+    public ResourceUrlEncodingFilter resourceUrlEncodingFilter(){
+        return new ResourceUrlEncodingFilter();
     }
 }

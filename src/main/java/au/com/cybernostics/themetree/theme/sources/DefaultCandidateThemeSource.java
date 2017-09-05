@@ -44,6 +44,7 @@ import org.springframework.core.env.Environment;
  * the list has been updated.
  *
  * @author jason wraxall
+ * @version $Id: $Id
  */
 public class DefaultCandidateThemeSource implements MutableCandidateThemeSource
 {
@@ -52,6 +53,13 @@ public class DefaultCandidateThemeSource implements MutableCandidateThemeSource
 
     private ApplicationEventPublisher eventPublisher;
 
+    /**
+     * <p>fromProperties.</p>
+     *
+     * @param env a {@link org.springframework.core.env.Environment} object.
+     * @param context a {@link org.springframework.context.ApplicationContext} object.
+     * @return a {@link au.com.cybernostics.themetree.theme.sources.MutableCandidateThemeSource} object.
+     */
     public static MutableCandidateThemeSource fromProperties(Environment env, ApplicationContext context)
     {
         final DefaultCandidateThemeSource listCandidateThemeSource = new DefaultCandidateThemeSource();
@@ -74,27 +82,38 @@ public class DefaultCandidateThemeSource implements MutableCandidateThemeSource
         return listCandidateThemeSource;
     }
 
+    /**
+     * <p>Constructor for DefaultCandidateThemeSource.</p>
+     */
     public DefaultCandidateThemeSource()
     {
     }
 
+    /**
+     * <p>Constructor for DefaultCandidateThemeSource.</p>
+     *
+     * @param c a {@link java.util.Collection} object.
+     */
     public DefaultCandidateThemeSource(Collection<? extends CandidateTheme> c)
     {
         themes.addAll(c.stream().collect(toList()));
     }
 
+    /** {@inheritDoc} */
     @Override
     public Stream<CandidateTheme> getCandidateThemes()
     {
         return themes.stream();
     }
 
+    /** {@inheritDoc} */
     @Override
     public int size()
     {
         return themes.size();
     }
 
+    /** {@inheritDoc} */
     @Override
     public boolean isEmpty()
     {
@@ -103,6 +122,7 @@ public class DefaultCandidateThemeSource implements MutableCandidateThemeSource
         return result;
     }
 
+    /** {@inheritDoc} */
     @Override
     public boolean add(CandidateTheme e)
     {
@@ -111,6 +131,7 @@ public class DefaultCandidateThemeSource implements MutableCandidateThemeSource
         return result;
     }
 
+    /** {@inheritDoc} */
     @Override
     public boolean remove(CandidateTheme e)
     {
@@ -119,6 +140,7 @@ public class DefaultCandidateThemeSource implements MutableCandidateThemeSource
         return result;
     }
 
+    /** {@inheritDoc} */
     @Override
     public boolean addAll(Collection<? extends CandidateTheme> c)
     {
@@ -127,6 +149,7 @@ public class DefaultCandidateThemeSource implements MutableCandidateThemeSource
         return result;
     }
 
+    /** {@inheritDoc} */
     @Override
     public void clear()
     {
@@ -134,6 +157,7 @@ public class DefaultCandidateThemeSource implements MutableCandidateThemeSource
         notifyEventListeners();
     }
 
+    /** {@inheritDoc} */
     @Autowired
     @Override
     public void setEventPublisher(ApplicationEventPublisher eventPublisher)

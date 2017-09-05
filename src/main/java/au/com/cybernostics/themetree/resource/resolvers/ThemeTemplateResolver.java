@@ -30,8 +30,10 @@ import org.thymeleaf.templateresolver.ITemplateResolver;
 import org.thymeleaf.templateresolver.TemplateResolution;
 
 /**
+ * <p>ThemeTemplateResolver class.</p>
  *
  * @author jason wraxall
+ * @version $Id: $Id
  */
 public class ThemeTemplateResolver implements ITemplateResolver
 {
@@ -40,24 +42,33 @@ public class ThemeTemplateResolver implements ITemplateResolver
     private final ThemePathResolver pathResolver;
     private static final Logger logger = Logger.getLogger(ThemeTemplateResolver.class.getName());
 
+    /**
+     * <p>Constructor for ThemeTemplateResolver.</p>
+     *
+     * @param delegate a {@link org.thymeleaf.templateresolver.ITemplateResolver} object.
+     * @param pathResolver a {@link au.com.cybernostics.themetree.paths.ThemePathResolver} object.
+     */
     public ThemeTemplateResolver(ITemplateResolver delegate, ThemePathResolver pathResolver)
     {
         this.delegate = delegate;
         this.pathResolver = pathResolver;
     }
 
+    /** {@inheritDoc} */
     @Override
     public String getName()
     {
         return "themed Resolver";
     }
 
+    /** {@inheritDoc} */
     @Override
     public Integer getOrder()
     {
         return Ordered.HIGHEST_PRECEDENCE;
     }
 
+    /** {@inheritDoc} */
     @Override
     public TemplateResolution resolveTemplate(IEngineConfiguration iec, String string, String request, Map<String, Object> map)
     {

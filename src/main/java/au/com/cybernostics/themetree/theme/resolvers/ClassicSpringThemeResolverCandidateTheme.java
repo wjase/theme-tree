@@ -24,8 +24,10 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.web.servlet.ThemeResolver;
 
 /**
+ * <p>ClassicSpringThemeResolverCandidateTheme class.</p>
  *
  * @author jason wraxall
+ * @version $Id: $Id
  */
 public class ClassicSpringThemeResolverCandidateTheme implements CandidateTheme
 {
@@ -36,23 +38,31 @@ public class ClassicSpringThemeResolverCandidateTheme implements CandidateTheme
     private ThemeResolver resolver;
     private int order;
 
+    /**
+     * <p>Constructor for ClassicSpringThemeResolverCandidateTheme.</p>
+     *
+     * @param resolver a {@link org.springframework.web.servlet.ThemeResolver} object.
+     */
     public ClassicSpringThemeResolverCandidateTheme(ThemeResolver resolver)
     {
         this.resolver = resolver;
     }
 
+    /** {@inheritDoc} */
     @Override
     public String getName(HttpServletRequest request)
     {
         return resolver.resolveThemeName(request);
     }
 
+    /** {@inheritDoc} */
     @Override
     public int getOrder()
     {
         return order;
     }
 
+    /** {@inheritDoc} */
     @Override
     public boolean isActive(HttpServletRequest request)
     {

@@ -22,12 +22,19 @@ package au.com.cybernostics.themetree.theme.sources;
 import org.springframework.context.ApplicationEvent;
 
 /**
+ * <p>ThemesUpdatedEvent class.</p>
  *
  * @author jason wraxall
+ * @version $Id: $Id
  */
 public class ThemesUpdatedEvent extends ApplicationEvent
 {
 
+    /**
+     * <p>Constructor for ThemesUpdatedEvent.</p>
+     *
+     * @param source a {@link java.lang.Object} object.
+     */
     public ThemesUpdatedEvent(Object source)
     {
         super(source);

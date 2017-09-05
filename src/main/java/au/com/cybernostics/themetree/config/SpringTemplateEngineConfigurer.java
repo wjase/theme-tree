@@ -22,11 +22,18 @@ package au.com.cybernostics.themetree.config;
 import org.thymeleaf.spring4.SpringTemplateEngine;
 
 /**
+ * <p>SpringTemplateEngineConfigurer interface.</p>
  *
  * @author jason wraxall
+ * @version $Id: $Id
  */
 public interface SpringTemplateEngineConfigurer
 {
 
+    /**
+     * <p>configure.</p>
+     *
+     * @param engine a {@link org.thymeleaf.spring4.SpringTemplateEngine} object.
+     */
     void configure(SpringTemplateEngine engine);
 }

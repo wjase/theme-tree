@@ -30,12 +30,20 @@ import org.springframework.expression.TypedValue;
 import org.springframework.expression.spel.support.StandardEvaluationContext;
 
 /**
+ * <p>LambdaExpressionMethod class.</p>
  *
  * @author jason wraxall
+ * @version $Id: $Id
  */
 public class LambdaExpressionMethod
 {
 
+    /**
+     * <p>onContext.</p>
+     *
+     * @param aContext a {@link org.springframework.expression.spel.support.StandardEvaluationContext} object.
+     * @return a {@link au.com.cybernostics.themetree.theme.sources.LambdaExpressionMethod.NamedLambdaRegistrar} object.
+     */
     public static NamedLambdaRegistrar onContext(StandardEvaluationContext aContext)
     {
         return new NamedLambdaRegistrar(aContext);

@@ -37,6 +37,7 @@ import org.springframework.context.ApplicationListener;
  * the current user.
  *
  * @author jason wraxall
+ * @version $Id: $Id
  */
 public class MultiCandidateThemeResolver implements CascadedThemeResolver, ApplicationListener<ThemesUpdatedEvent>
 {
@@ -45,6 +46,7 @@ public class MultiCandidateThemeResolver implements CascadedThemeResolver, Appli
     private List<String> defaultName = asList("");
     private ThemePersistence persistence = new NoThemePersistence();
 
+    /** {@inheritDoc} */
     @Override
     public Stream<String> getCurrentThemes(HttpServletRequest request)
     {
@@ -60,38 +62,66 @@ public class MultiCandidateThemeResolver implements CascadedThemeResolver, Appli
                 defaultName.stream());
     }
 
+    /** {@inheritDoc} */
     @Override
     public void onApplicationEvent(ThemesUpdatedEvent e)
     {
         persistence.clearAll();
     }
 
+    /**
+     * <p>getThemeSource.</p>
+     *
+     * @return a {@link au.com.cybernostics.themetree.theme.sources.MutableCandidateThemeSource} object.
+     */
     public MutableCandidateThemeSource getThemeSource()
     {
         return candidateThemeSource;
     }
 
+    /**
+     * <p>setThemeSource.</p>
+     *
+     * @param candidateThemes a {@link au.com.cybernostics.themetree.theme.sources.MutableCandidateThemeSource} object.
+     */
     public void setThemeSource(MutableCandidateThemeSource candidateThemes)
     {
         this.candidateThemeSource = candidateThemes;
     }
 
+    /**
+     * <p>Getter for the field <code>defaultName</code>.</p>
+     *
+     * @return a {@link java.util.List} object.
+     */
     public List<String> getDefaultName()
     {
         return defaultName;
     }
 
+    /** {@inheritDoc} */
     @Override
     public void setDefault(String name)
     {
         this.defaultName = asList(name);
     }
 
+    /**
+     * <p>addTheme.</p>
+     *
+     * @param theme a {@link au.com.cybernostics.themetree.theme.resolvers.CandidateTheme} object.
+     * @return a boolean.
+     */
     public boolean addTheme(CandidateTheme theme)
     {
         return candidateThemeSource.add(theme);
     }
 
+    /**
+     * <p>Setter for the field <code>persistence</code>.</p>
+     *
+     * @param persistence a {@link au.com.cybernostics.themetree.theme.persistence.ThemePersistence} object.
+     */
     public void setPersistence(ThemePersistence persistence)
     {
         this.persistence = persistence;

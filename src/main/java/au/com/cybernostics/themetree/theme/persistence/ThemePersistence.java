@@ -32,20 +32,44 @@ import javax.servlet.http.HttpServletResponse;
  * the calculated list of themes.
  *
  * @author jason wraxall
+ * @version $Id: $Id
  */
 public interface ThemePersistence
 {
 
+    /** Constant <code>THEME_PERSISTENCE_KEY="themetree.themes"</code> */
     public static final String THEME_PERSISTENCE_KEY = "themetree.themes";
 
+    /**
+     * <p>get.</p>
+     *
+     * @param request a {@link javax.servlet.http.HttpServletRequest} object.
+     * @return a {@link java.util.Optional} object.
+     */
     Optional<Stream<String>> get(HttpServletRequest request);
 
+    /**
+     * <p>put.</p>
+     *
+     * @param themes a {@link java.lang.String} object.
+     * @param request a {@link javax.servlet.http.HttpServletRequest} object.
+     * @param response a {@link javax.servlet.http.HttpServletResponse} object.
+     */
     void put(String themes,
             HttpServletRequest request,
             HttpServletResponse response);
 
+    /**
+     * <p>clear.</p>
+     *
+     * @param request a {@link javax.servlet.http.HttpServletRequest} object.
+     * @param response a {@link javax.servlet.http.HttpServletResponse} object.
+     */
     void clear(HttpServletRequest request,
             HttpServletResponse response);
 
+    /**
+     * <p>clearAll.</p>
+     */
     void clearAll();
 }

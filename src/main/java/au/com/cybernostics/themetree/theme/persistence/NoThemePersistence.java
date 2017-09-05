@@ -25,30 +25,36 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
+ * <p>NoThemePersistence class.</p>
  *
  * @author jason wraxall
+ * @version $Id: $Id
  */
 public class NoThemePersistence implements ThemePersistence
 {
 
+    /** {@inheritDoc} */
     @Override
     public Optional<Stream<String>> get(HttpServletRequest request)
     {
         return Optional.empty();
     }
 
+    /** {@inheritDoc} */
     @Override
     public void put(String themes, HttpServletRequest request, HttpServletResponse response)
     {
 
     }
 
+    /** {@inheritDoc} */
     @Override
     public void clear(HttpServletRequest request, HttpServletResponse response)
     {
 
     }
 
+    /** {@inheritDoc} */
     @Override
     public void clearAll()
     {

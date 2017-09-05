@@ -20,11 +20,21 @@ package au.com.cybernostics.themetree.resource.resolvers;
  * #L%
  */
 /**
- *
+ * <p>TemplateExistenceChecker interface.</p>
+ * Provides a method to determine if the template is able to be
+ * loaded from the classpath by the view.
+ * 
  * @author jason wraxall
+ * @version $Id: $Id
  */
 public interface TemplateExistenceChecker
 {
 
+    /**
+     * <p>templateExists.</p>
+     *
+     * @param withName a {@link java.lang.String} object.
+     * @return a boolean.
+     */
     boolean templateExists(String withName);
 }

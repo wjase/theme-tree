@@ -26,19 +26,27 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 /**
+ * <p>ThemePersistenceInterceptor class.</p>
  *
  * @author jason wraxall
+ * @version $Id: $Id
  */
 public class ThemePersistenceInterceptor extends HandlerInterceptorAdapter
 {
 
     private ThemePersistence persistence;
 
+    /**
+     * <p>Constructor for ThemePersistenceInterceptor.</p>
+     *
+     * @param persistence a {@link au.com.cybernostics.themetree.theme.persistence.ThemePersistence} object.
+     */
     public ThemePersistenceInterceptor(ThemePersistence persistence)
     {
         this.persistence = persistence;
     }
 
+    /** {@inheritDoc} */
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
             throws ServletException

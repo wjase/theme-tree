@@ -24,25 +24,34 @@ import java.util.stream.Stream;
 import javax.servlet.http.HttpServletRequest;
 
 /**
+ * <p>FixedThemeResolver class.</p>
  *
  * @author jason wraxall
+ * @version $Id: $Id
  */
 public class FixedThemeResolver implements CascadedThemeResolver
 {
 
     private List<String> themeset;
 
+    /** {@inheritDoc} */
     @Override
     public Stream<String> getCurrentThemes(HttpServletRequest request)
     {
         return themeset.stream();
     }
 
+    /**
+     * <p>Setter for the field <code>themeset</code>.</p>
+     *
+     * @param themeset a {@link java.util.List} object.
+     */
     public void setThemeset(List<String> themeset)
     {
         this.themeset = themeset;
     }
 
+    /** {@inheritDoc} */
     @Override
     public void setDefault(String name)
     {

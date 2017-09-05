@@ -23,6 +23,12 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
+/**
+ * <p>ThemeConfiguration class.</p>
+ *
+ * @author jason
+ * @version $Id: $Id
+ */
 @ComponentScan
 public class ThemeConfiguration
 {

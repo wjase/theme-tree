@@ -45,12 +45,13 @@ import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
- * An implementation of {@link WebMvcConfigurer} with functional consumers and
+ * An implementation of {@link org.springframework.web.servlet.config.annotation.WebMvcConfigurer} with functional consumers and
  * suppliers meaning that users don't need to subclass , but instead simply
  * implement the required bean(s) to configure what they want to configure.
  *
  * @author Jason Wraxall
  * @since 4.7
+ * @version $Id: $Id
  */
 @Configuration
 @ConditionalOnProperty(name = "com.cybernostics.themetree.skipmvcconfig", havingValue = "false", matchIfMissing = true)
@@ -159,7 +160,7 @@ public class ComposableFunctionWebMvcConfigurerAdapter implements WebMvcConfigur
     /**
      * {@inheritDoc}
      * <p>
-     * Declare a Bean of type Consumer<PathMatchConfigurer> named
+     * Declare a Bean of type Consumer&lt;PathMatchConfigurer&gt; named
      * configurePathMatchFunction to override this.
      */
     @Override
@@ -171,7 +172,7 @@ public class ComposableFunctionWebMvcConfigurerAdapter implements WebMvcConfigur
     /**
      * {@inheritDoc}
      * <p>
-     * Declare a Bean of type Consumer<ContentNegotiationConfigurer> named
+     * Declare a Bean of type Consumer&lt;ContentNegotiationConfigurer&gt; named
      * configureContentNegotiationFunction to override this.
      */
     @Override
@@ -183,7 +184,7 @@ public class ComposableFunctionWebMvcConfigurerAdapter implements WebMvcConfigur
     /**
      * {@inheritDoc}
      * <p>
-     * Declare a Bean of type Consumer<AsyncSupportConfigurer> named
+     * Declare a Bean of type Consumer&lt;AsyncSupportConfigurer&gt; named
      * configureAsyncSupportFunction to override this.
      */
     @Override
@@ -195,7 +196,7 @@ public class ComposableFunctionWebMvcConfigurerAdapter implements WebMvcConfigur
     /**
      * {@inheritDoc}
      * <p>
-     * Declare a Bean of type Consumer<DefaultServletHandlerConfigurer> named
+     * Declare a Bean of type Consumer&lt;DefaultServletHandlerConfigurer&gt; named
      * configureDefaultServletHandlingFunction to override this.
      */
     @Override
@@ -207,7 +208,7 @@ public class ComposableFunctionWebMvcConfigurerAdapter implements WebMvcConfigur
     /**
      * {@inheritDoc}
      * <p>
-     * Declare a Bean of type Consumer<FormatterRegistry> named
+     * Declare a Bean of type Consumer&lt;FormatterRegistry&gt; named
      * addFormattersFunctionFunction to override this.
      */
     @Override
@@ -219,7 +220,7 @@ public class ComposableFunctionWebMvcConfigurerAdapter implements WebMvcConfigur
     /**
      * {@inheritDoc}
      * <p>
-     * Declare a Bean of type Consumer<InterceptorRegistry> named
+     * Declare a Bean of type Consumer&lt;InterceptorRegistry&gt; named
      * addInterceptorsFunction to override this.
      */
     @Override
@@ -231,7 +232,7 @@ public class ComposableFunctionWebMvcConfigurerAdapter implements WebMvcConfigur
     /**
      * {@inheritDoc}
      * <p>
-     * Declare a Bean of type Consumer<ResourceHandlerRegistry> named
+     * Declare a Bean of type Consumer&lt;ResourceHandlerRegistry&gt; named
      * addResourceHandlersFunction to override this.
      */
     @Override
@@ -243,7 +244,7 @@ public class ComposableFunctionWebMvcConfigurerAdapter implements WebMvcConfigur
     /**
      * {@inheritDoc}
      * <p>
-     * Declare a Bean of type Consumer<CorsRegistry> named
+     * Declare a Bean of type Consumer&lt;CorsRegistry&gt; named
      * addCorsMappingsFunction to override this.
      */
     @Override
@@ -255,7 +256,7 @@ public class ComposableFunctionWebMvcConfigurerAdapter implements WebMvcConfigur
     /**
      * {@inheritDoc}
      * <p>
-     * Declare a Bean of type Consumer<ViewControllerRegistry> named
+     * Declare a Bean of type Consumer&lt;ViewControllerRegistry&gt; named
      * addViewControllersFunction to override this.
      */
     @Override
@@ -267,7 +268,7 @@ public class ComposableFunctionWebMvcConfigurerAdapter implements WebMvcConfigur
     /**
      * {@inheritDoc}
      * <p>
-     * Declare a Bean of type Consumer<ViewResolverRegistry> named
+     * Declare a Bean of type Consumer&lt;ViewResolverRegistry&gt; named
      * configureViewResolversFunction to override this.
      */
     @Override
@@ -279,7 +280,7 @@ public class ComposableFunctionWebMvcConfigurerAdapter implements WebMvcConfigur
     /**
      * {@inheritDoc}
      * <p>
-     * Declare a Bean of type Consumer<List<HandlerMethodArgumentResolver>>
+     * Declare a Bean of type Consumer&lt;List&lt;HandlerMethodArgumentResolver&gt;&gt;
      * named addArgumentResolversFunction to override this.
      */
     @Override
@@ -291,7 +292,7 @@ public class ComposableFunctionWebMvcConfigurerAdapter implements WebMvcConfigur
     /**
      * {@inheritDoc}
      * <p>
-     * Declare a Bean of type Consumer<List<HandlerMethodReturnValueHandler>>
+     * Declare a Bean of type Consumer&lt; List&lt;HandlerMethodReturnValueHandler&gt;&gt;
      * named addReturnValueHandlersFunction to override this.
      */
     @Override
@@ -303,7 +304,7 @@ public class ComposableFunctionWebMvcConfigurerAdapter implements WebMvcConfigur
     /**
      * {@inheritDoc}
      * <p>
-     * Declare a Bean of type Consumer<List<HttpMessageConverter<?>>> named
+     * Declare a Bean of type Consumer&lt;List&lt;HttpMessageConverter&lt;?&gt;&gt;&gt; named
      * configureMessageConvertersFunction to override this.
      */
     @Override
@@ -314,8 +315,8 @@ public class ComposableFunctionWebMvcConfigurerAdapter implements WebMvcConfigur
 
     /**
      * {@inheritDoc}
-     * <p>
-     * Declare a Bean of type Consumer<List<HttpMessageConverter<?>>> named
+     *
+     * Declare a Bean of type Consumer &lt;List&lt;HttpMessageConverter&lt;?&gt;&gt; named
      * extendMessageConvertersFunction to override this.
      */
     @Override
@@ -326,8 +327,8 @@ public class ComposableFunctionWebMvcConfigurerAdapter implements WebMvcConfigur
 
     /**
      * {@inheritDoc}
-     * <p>
-     * Declare a Bean of type Consumer<List<HandlerExceptionResolver>> named
+     * 
+     * Declare a Bean of type Consumer&lt;List &lt; HandlerExceptionResolver&gt;&gt; named
      * configureHandlerExceptionResolversFunction to override this.
      */
     @Override
@@ -339,7 +340,7 @@ public class ComposableFunctionWebMvcConfigurerAdapter implements WebMvcConfigur
     /**
      * {@inheritDoc}
      * <p>
-     * Declare a Bean of type Consumer<List<HandlerExceptionResolver>> named
+     * Declare a Bean of type Consumer&lt;List&lt;HandlerExceptionResolver&gt;&gt; named
      * extendHandlerExceptionResolversFunction to override this.
      */
     @Override
@@ -351,7 +352,7 @@ public class ComposableFunctionWebMvcConfigurerAdapter implements WebMvcConfigur
     /**
      * {@inheritDoc}
      * <p>
-     * Declare a Bean of type Supplier<Validator> named getValidatorFunction to
+     * Declare a Bean of type Supplier&lt;Validator&gt; named getValidatorFunction to
      * override this.
      */
     @Override
@@ -363,7 +364,7 @@ public class ComposableFunctionWebMvcConfigurerAdapter implements WebMvcConfigur
     /**
      * {@inheritDoc}
      * <p>
-     * Declare a Bean of type Supplier<MessageCodesResolver> named
+     * Declare a Bean of type Supplier&lt;MessageCodesResolver&gt; named
      * getMessageCodesResolverFunction to override this.
      */
     @Override

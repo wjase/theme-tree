@@ -31,6 +31,9 @@ import org.springframework.context.ApplicationContext;
 /**
  * Default implementation to find Thymeleaf templates based on prefix and suffix
  * properties
+ *
+ * @author jason
+ * @version $Id: $Id
  */
 public class DefaultTemplateExistenceChecker implements TemplateExistenceChecker
 {
@@ -38,17 +41,30 @@ public class DefaultTemplateExistenceChecker implements TemplateExistenceChecker
     private ThymeleafProperties thymeleafProperties;
     private ApplicationContext applicationContext;
 
+    /**
+     * <p>Constructor for DefaultTemplateExistenceChecker.</p>
+     *
+     * @param thymeleafProperties a {@link org.springframework.boot.autoconfigure.thymeleaf.ThymeleafProperties} object.
+     * @param applicationContext a {@link org.springframework.context.ApplicationContext} object.
+     */
     public DefaultTemplateExistenceChecker(ThymeleafProperties thymeleafProperties, ApplicationContext applicationContext)
     {
         this.thymeleafProperties = thymeleafProperties;
         this.applicationContext = applicationContext;
     }
 
+    /**
+     * <p>getThymeleafResourceUrlForName.</p>
+     *
+     * @param name a {@link java.lang.String} object.
+     * @return a {@link java.lang.String} object.
+     */
     public String getThymeleafResourceUrlForName(String name)
     {
         return thymeleafProperties.getPrefix() + name + thymeleafProperties.getSuffix();
     }
 
+    /** {@inheritDoc} */
     public boolean templateExists(String name)
     {
         String resource = getThymeleafResourceUrlForName(name);

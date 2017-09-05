@@ -20,6 +20,8 @@ package au.com.cybernostics.themetree.asset;
  * #L%
  */
 import static java.util.Arrays.asList;
+import static java.util.Collections.EMPTY_LIST;
+import java.util.List;
 import java.util.TreeSet;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.resource.ResourceResolver;
@@ -29,15 +31,30 @@ import org.springframework.web.servlet.resource.ResourceResolver;
  * etc
  *
  * @author jason wraxall
+ * @version $Id: $Id
  */
 public class StaticResourceRootCollection extends TreeSet<String>
 {
 
-    public StaticResourceRootCollection(String... rootPaths)
+    private String[] resourceLocations = {};
+    
+    /**
+     * <p>Constructor for StaticResourceRootCollection.</p>
+     *
+     * @param rootPaths a {@link java.lang.String} object.
+     */
+    public StaticResourceRootCollection(List<String> rootPaths,List<String> locations)
     {
-        addAll(asList(rootPaths));
+        addAll(rootPaths);
+        resourceLocations = locations.toArray(resourceLocations);
     }
 
+    /**
+     * <p>register.</p>
+     *
+     * @param registry a {@link org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry} object.
+     * @param resolver a {@link org.springframework.web.servlet.resource.ResourceResolver} object.
+     */
     public void register(ResourceHandlerRegistry registry, ResourceResolver resolver)
     {
         forEach(it -> mapResourceHandler(it, registry, resolver));
@@ -46,7 +63,7 @@ public class StaticResourceRootCollection extends TreeSet<String>
     private void mapResourceHandler(String type, ResourceHandlerRegistry registry, ResourceResolver resolver)
     {
         registry.addResourceHandler("/" + type + "*/**")
-                .addResourceLocations(String.format("classpath:/templates/", type))
+                .addResourceLocations(resourceLocations)
                 .resourceChain(true)
                 .addResolver(resolver);
 

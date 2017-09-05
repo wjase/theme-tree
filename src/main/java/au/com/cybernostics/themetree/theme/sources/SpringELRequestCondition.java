@@ -49,6 +49,7 @@ import org.springframework.expression.spel.support.StandardEvaluationContext;
  * </pre>
  *
  * @author jason wraxall
+ * @version $Id: $Id
  */
 public class SpringELRequestCondition implements Function<HttpServletRequest, Boolean> {
 
@@ -58,18 +59,37 @@ public class SpringELRequestCondition implements Function<HttpServletRequest, Bo
     private Optional<BiConsumer<StandardEvaluationContext, HttpServletRequest>> requestSimpleVariableExtractor = Optional.empty();
     private static Logger log = Logger.getLogger(SpringELRequestCondition.class.getName());
 
+    /**
+     * <p>Constructor for SpringELRequestCondition.</p>
+     */
     public SpringELRequestCondition() {
     }
 
+    /**
+     * <p>Constructor for SpringELRequestCondition.</p>
+     *
+     * @param expression a {@link java.lang.String} object.
+     */
     public SpringELRequestCondition(String expression) {
         conditionalExpression = parser.parseExpression(expression);
         evalContext.setRootObject(this);
     }
 
+    /**
+     * <p>addMethod.</p>
+     *
+     * @param methodName a {@link java.lang.String} object.
+     * @param lambda a {@link java.util.function.Function} object.
+     */
     public void addMethod(String methodName, Function<Object[], Object> lambda) {
         LambdaExpressionMethod.onContext(evalContext).registerMethod(methodName, lambda);
     }
 
+    /**
+     * <p>setApplicationContext.</p>
+     *
+     * @param context a {@link org.springframework.context.ApplicationContext} object.
+     */
     public void setApplicationContext(ApplicationContext context) {
         evalContext.setVariable("app", context);
     }
@@ -80,12 +100,13 @@ public class SpringELRequestCondition implements Function<HttpServletRequest, Bo
      * could involve some date processing for example to create a
      * 'clientDateTime'
      *
-     * @param requestSimpleVaribaleExtractor
+     * @param requestSimpleVaribaleExtractor a {@link java.util.function.BiConsumer} object.
      */
     public void setRequestSimpleVariableExtractor(BiConsumer<StandardEvaluationContext, HttpServletRequest> requestSimpleVaribaleExtractor) {
         this.requestSimpleVariableExtractor = Optional.of(requestSimpleVaribaleExtractor);
     }
 
+    /** {@inheritDoc} */
     @Override
     public Boolean apply(HttpServletRequest t) {
         evalContext.setVariable("request", t);
