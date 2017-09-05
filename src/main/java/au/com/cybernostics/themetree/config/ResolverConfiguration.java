@@ -21,26 +21,48 @@ package au.com.cybernostics.themetree.config;
  */
 import au.com.cybernostics.themetree.paths.ThemePathResolver;
 import au.com.cybernostics.themetree.resource.resolvers.ThemeResourceResolver;
+import java.util.regex.Pattern;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
+import org.springframework.web.servlet.resource.ContentVersionStrategy;
+import org.springframework.web.servlet.resource.VersionResourceResolver;
 
 /**
+ * <p>
+ * ResolverConfiguration class.</p>
  *
  * @author jason wraxall
+ * @version $Id: $Id
  */
 @Configuration
-public class ResolverConfiguration
-{
+public class ResolverConfiguration {
 
     @Autowired
-    ThemePathResolver themePathResolver;
+    private ThemePathResolver themePathResolver;
+    
+    @Value("${themetree.version.assets:}")
+    private String versionedAssets;
+    
 
+    /**
+     * <p>
+     * themedResourceResolver.</p>
+     *
+     * @return a
+     * {@link au.com.cybernostics.themetree.resource.resolvers.ThemeResourceResolver}
+     * object.
+     */
     @Bean
     @Order(Integer.MIN_VALUE)
-    public ThemeResourceResolver themedResourceResolver()
-    {
-        return new ThemeResourceResolver(themePathResolver);
+    public ThemeResourceResolver themedResourceResolver() {
+        final ThemeResourceResolver themeResourceResolver = new ThemeResourceResolver(themePathResolver);
+        for(String path:versionedAssets.split(",")){
+            themeResourceResolver.addResourceVersionStrategy(path, new ContentVersionStrategy());    
+        }
+        
+        return themeResourceResolver;
     }
 }
