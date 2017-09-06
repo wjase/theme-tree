@@ -20,6 +20,7 @@ package au.com.cybernostics.themetree.resource.resolvers;
  * #L%
  */
 import au.com.cybernostics.themetree.paths.ThemePathResolver;
+import static au.com.cybernostics.themetree.resource.resolvers.ResourceWildcardAdder.addVersionWildcard;
 
 import java.io.IOException;
 import java.util.List;
@@ -149,8 +150,9 @@ public class ThemeResourceResolver extends PathResourceResolver {
     }
 
     public void addResourceVersionStrategy(String pathPattern, VersionStrategy resourceVersionStrategy) {
-
-        versionStrategies.put(pathPattern, resourceVersionStrategy);
+        versionStrategies.put(addVersionWildcard(pathPattern), resourceVersionStrategy);
     }
+
+
 
 }

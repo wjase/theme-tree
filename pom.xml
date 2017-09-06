@@ -131,14 +131,14 @@
                         <version>1.6</version>
                         <executions>
                             <execution>
-                                <configuration>
-                                    <passphrase>${gpgpassphrase}</passphrase>
-                                </configuration>
                                 <id>sign-artifacts</id>
-                                <phase>verify</phase>
+                                <phase>install</phase>
                                 <goals>
                                     <goal>sign</goal>
                                 </goals>
+                                <configuration>
+                                    <interactive>false</interactive>
+                                </configuration>
                             </execution>
                         </executions>
                     </plugin>
